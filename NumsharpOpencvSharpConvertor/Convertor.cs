@@ -29,9 +29,11 @@ namespace NumsharpOpencvSharpConvertor
         {
             
             NDArray array = np.zeros(1);
-            int depth = mat.Depth();
-            byte[] data = new byte[mat.Cols * mat.Rows * depth];
+            int channel = mat.Channels();
+
+            byte[] data = new byte[mat.Cols * mat.Rows * channel];
             Marshal.Copy(mat.DataStart, data, 0, data.Length);
+            int depth = mat.Depth();
             switch (depth)
             {
                 case CV_8U:
@@ -72,7 +74,6 @@ namespace NumsharpOpencvSharpConvertor
                     throw new Exception("Can not support User Type!");
             }
 
-            int channel = mat.Channels();
             array = channel == 1 ? array.reshape(mat.Rows, mat.Cols) : array.reshape(mat.Rows, mat.Cols, channel);
             return array;
         }

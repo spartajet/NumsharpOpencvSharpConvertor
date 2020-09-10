@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Drawing;
 using NumSharp;
 using OpenCvSharp;
+using OpenCvSharp.Extensions;
 
 namespace NumsharpOpencvSharpConvertor.Example
 {
@@ -15,7 +17,8 @@ namespace NumsharpOpencvSharpConvertor.Example
 
         static NDArray Mat2NdArray()
         {
-            Mat mat = Cv2.ImRead("Test2.png", ImreadModes.AnyDepth);
+            Mat mat = Cv2.ImRead("Test1.png");
+            Bitmap bitmap = mat.ToBitmap();
             NDArray array = mat.ToNdArray();
             return array;
         }
