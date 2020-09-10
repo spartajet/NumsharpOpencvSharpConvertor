@@ -1,11 +1,26 @@
 ﻿using System;
 using NumSharp;
+using OpenCvSharp;
 
 namespace NumsharpOpencvSharpConvertor.Example
 {
     class Program
     {
         static void Main(string[] args)
+        {
+            NDArray array = Mat2NdArray();
+
+            Mat mat = array.ToMat();
+        }
+
+        static NDArray Mat2NdArray()
+        {
+            Mat mat = Cv2.ImRead("Test2.png", ImreadModes.AnyDepth);
+            NDArray array = mat.ToNdArray();
+            return array;
+        }
+
+        static void NdArrayTest()
         {
             int[,,] data =
             {
@@ -20,7 +35,7 @@ namespace NumsharpOpencvSharpConvertor.Example
                     {21, 22, 23, 24}
                 }
             };
-            NDArray array=new NDArray(data);
+            NDArray array = new NDArray(data);
             Shape shape = array.Shape;
             int[] shapes = array.shape;
             Console.WriteLine("Hello World!");

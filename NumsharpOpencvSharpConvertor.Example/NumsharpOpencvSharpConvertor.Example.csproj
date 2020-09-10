@@ -6,7 +6,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="OpenCvSharp4.Windows" Version="4.4.0.20200725" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\NumsharpOpencvSharpConvertor\NumsharpOpencvSharpConvertor.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Test1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Test2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
